@@ -1,17 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import viteSvgLoader from 'vite-svg-loader'
+import viteSvgLoader from "vite-svg-loader";
 
 export default {
   devtools: { enabled: true },
-  css: [
-    './assets/style.css'
-  ],
-  buildModules: [
-    '@nuxt/postcss8'
-  ],
+
+  css: ["./assets/style.css"],
+
+  buildModules: ["@nuxt/postcss8"],
+
   vite: {
-    plugins: [
-      viteSvgLoader()
-    ]
+    plugins: [viteSvgLoader()],
+  },
+
+  modules: ["vue3-carousel-nuxt"],
+  carousel: {
+    prefix: "MyPrefix",
   }
-}
+};
