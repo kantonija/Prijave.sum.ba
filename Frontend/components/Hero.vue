@@ -1,10 +1,10 @@
 <template>
   <section class="hero">
     <div class="button-container">
-      <button class="hero-button">Button 1</button>
-      <button class="hero-button">Button 2</button>
-      <button class="hero-button">Button 3</button>
-      <button class="hero-button">Button 4</button>
+      <button class="hero-button">Otvorene prijave</button>
+      <button class="hero-button">Zatvorene prijave</button>
+      <button class="hero-button">Moje prijave</button>
+      <button class="hero-button">Aktivno</button>
     </div>
     <div class="hero-content">
       <h1>Welcome to Switch</h1>
@@ -20,6 +20,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  max-width: 100%;
   background-color: white;
   color: black;
   text-align: center;
@@ -44,7 +45,7 @@
 .button-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .hero-button {
@@ -52,61 +53,17 @@
   color: white;
   border: none;
   padding: 10px 20px;
-  margin: 0 10px;
+  margin: 0 5px;
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 25%;
+  max-width: 180px;
 }
 
 .hero-button:hover {
   background-color: rgba(16, 28, 44, 0.9);
-}
-
-.cards-container {
-  position: relative;
-}
-
-.arrow-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: transparent;
-  border: none;
-  color: #000;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.arrow-button.left {
-  left: 10px;
-}
-
-.arrow-button.right {
-  right: 10px;
-}
-
-.cards-wrapper {
-  overflow: hidden;
-}
-
-.cards {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-
-.card {
-  flex: 0 0 auto;
-  /* Prevent cards from growing */
-  width: 300px;
-  /* Adjust card width as needed */
-  margin-right: 20px;
-  /* Space between cards */
-}
-
-.card img {
-  width: 100%;
-  /* Ensure image fills its container */
 }
 
 @media (max-width: 768px) {
