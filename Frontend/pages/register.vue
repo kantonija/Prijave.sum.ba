@@ -51,10 +51,22 @@ import NameIcon from '~/assets/icons/name.svg'
 </script>
 
 <style scoped>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
   background-color: #101D2F;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 5px;
@@ -65,8 +77,7 @@ import NameIcon from '~/assets/icons/name.svg'
 .nuxt-link {
   text-decoration: none;
   color: white;
-  align-self: flex-end;
-  margin-right: 20px;
+  align-self: center;
 }
 
 .nuxt-link:hover {
@@ -75,8 +86,9 @@ import NameIcon from '~/assets/icons/name.svg'
 }
 
 p {
-  font-size: 2em;
+  font-size: 3.5em;
   margin-top: 20px;
+  margin-right: 70%;
 }
 
 .login-container {
@@ -187,7 +199,7 @@ p {
 .date-div {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 .input-container input[type="date"] {
@@ -215,7 +227,7 @@ p {
   }
 
   .nuxt-link {
-    align-self: flex-end;
+    align-self: center;
     margin-right: 0;
   }
 
@@ -260,7 +272,7 @@ p {
 
   .submit-div {
     flex-direction: column;
-    margin: 20px 0
+    margin: 20px 0;
   }
 }
 </style>

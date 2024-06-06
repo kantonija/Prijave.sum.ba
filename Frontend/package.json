@@ -10,8 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^2.0.0",
     "nuxt": "^3.11.2",
+    "swiper": "^11.1.4",
     "vue": "^3.4.21",
+    "vue-carousel": "^0.18.0",
     "vue-router": "^4.3.0",
     "vue3-carousel": "^0.3.3",
     "vue3-carousel-nuxt": "^1.1.1"
