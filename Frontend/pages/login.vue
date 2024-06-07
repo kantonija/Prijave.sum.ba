@@ -38,10 +38,22 @@ import ArrowRightIcon from '~/assets/icons/arrow-right.svg'
 </script>
 
 <style scoped>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .container {
   background-color: #101D2F;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 5px;
@@ -52,7 +64,7 @@ import ArrowRightIcon from '~/assets/icons/arrow-right.svg'
 .nuxt-link {
   text-decoration: none;
   color: white;
-  align-self: flex-end;
+  align-self: center;
   margin-right: 20px;
 }
 
@@ -62,8 +74,9 @@ import ArrowRightIcon from '~/assets/icons/arrow-right.svg'
 }
 
 p {
-  font-size: 2em;
+  font-size: 3.5em;
   margin-top: 20px;
+  margin-right: 70%;
 }
 
 .login-container {
@@ -168,7 +181,7 @@ p {
   width: 80%;
   max-width: 280px;
   height: auto;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -177,7 +190,7 @@ p {
   }
 
   .nuxt-link {
-    align-self:flex-end;
+    align-self: center;
     margin-right: 0;
   }
 

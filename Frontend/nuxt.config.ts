@@ -12,4 +12,7 @@ export default {
   vite: {
     plugins: [viteSvgLoader()],
   },
+  carousel: {
+    prefix: 'MyPrefix' // Replace 'MyPrefix' with your desired prefix
+  }
 };
