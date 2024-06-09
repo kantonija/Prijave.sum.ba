@@ -1,17 +1,46 @@
 <template>
   <section class="hero">
     <div class="button-container">
-      <button class="hero-button">Otvorene prijave</button>
-      <button class="hero-button">Zatvorene prijave</button>
-      <button class="hero-button">Moje prijave</button>
-      <button class="hero-button">Aktivno</button>
+      <button class="hero-button" @click="showInfo(1)">Otvorene prijave</button>
+      <button class="hero-button" @click="showInfo(2)">Zatvorene prijave</button>
+      <button class="hero-button" @click="showInfo(3)">Moje prijave</button>
+      <button class="hero-button" @click="showInfo(4)">Aktivno</button>
     </div>
     <div class="hero-content">
-      <h1>Welcome to Switch</h1>
-      <p>Your gateway to innovative technology and solutions.</p>
+      <div v-if="selectedButton === 1">
+        <h2>Otvorene prijave</h2>
+        <p>Description 1</p>
+      </div>
+      <div v-else-if="selectedButton === 2">
+        <h2>Zatvorene prijave</h2>
+        <p>Description 2</p>
+      </div>
+      <div v-else-if="selectedButton === 3">
+        <h2>Moje prijave</h2>
+        <p>Description 3</p>
+      </div>
+      <div v-else-if="selectedButton === 4">
+        <h2>Aktivno</h2>
+        <p>Description 4</p>
+      </div>
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedButton: 1
+    };
+  },
+  methods: {
+    showInfo(buttonNumber) {
+      this.selectedButton = buttonNumber;
+    }
+  }
+};
+</script>
 
 <style scoped>
 .hero {
