@@ -4,7 +4,6 @@
 <template>
     <div>
         <Header></Header>
-        <Hero></Hero>
-        <Footer></Footer>
+        <CreateHero></CreateHero>
     </div>
 </template>

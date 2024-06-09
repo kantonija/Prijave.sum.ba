@@ -2,7 +2,6 @@
 import viteSvgLoader from "vite-svg-loader";
 
 export default {
-  modules: ['vue3-carousel-nuxt'],
   devtools: { enabled: true },
 
   css: ["./assets/style.css"],
@@ -12,7 +11,9 @@ export default {
   vite: {
     plugins: [viteSvgLoader()],
   },
+
+  modules: ["vue3-carousel-nuxt"],
   carousel: {
-    prefix: 'MyPrefix' // Replace 'MyPrefix' with your desired prefix
+    prefix: "MyPrefix",
   }
 };

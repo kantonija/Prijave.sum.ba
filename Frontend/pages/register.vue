@@ -1,11 +1,10 @@
 <template>
   <div class="container">
-    <NuxtLink to="/" class="nuxt-link">Home</NuxtLink>
     <p>Sign Up</p>
     <div class="login-container">
       <form class="login-form">
         <div class="input-group">
-          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          <input type="name" id="name" name="name" placeholder="Enter your name" required>
           <div class="label-div">
             <NameIcon class="icon2" /> <label for="name" class="label">Name</label>
           </div>
@@ -23,15 +22,15 @@
           </div>
         </div>
         <div class="input-group">
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
           <div class="label-div">
-            <PasswordIcon class="icon2" /> <label for="confirm-password" class="label">Confirm Password</label>
+            <PasswordIcon class="icon2" /> <label for="password" class="label">Confirm password</label>
           </div>
         </div>
         <div class="submit-div">
           <div class="input-container date-div">
             <label for="date">Date of birth: </label>
-            <input type="date" id="date" name="date" placeholder="Date of Birth">
+            <input type="date" placeholder="Date of Birth">
           </div>
           <button type="submit" class="login-button">
             <ArrowRightIcon class="icon-arrow" />
@@ -51,99 +50,69 @@ import NameIcon from '~/assets/icons/name.svg'
 </script>
 
 <style scoped>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .container {
   background-color: #101D2F;
-  min-height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 5px;
+  padding-top: 20px;
   align-items: center;
-  color: white;
-}
-
-.nuxt-link {
-  text-decoration: none;
-  color: white;
-  align-self: center;
-}
-
-.nuxt-link:hover {
-  color: rgb(172, 172, 172);
-  text-decoration: underline;
-}
-
-p {
-  font-size: 3.5em;
-  margin-top: 20px;
-  margin-right: 70%;
-}
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
 }
 
 .login-form {
   background-color: #182A44;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
   border: 3px solid white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   text-align: center;
+}
+
+p {
+  font-size: 48px;
+  margin-right: 70%;
 }
 
 .input-group {
   margin-bottom: 15px;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .input-group label {
   display: block;
-  margin-top: 5px;
+  margin-bottom: 15px;
   color: #ffffff;
 }
 
 .input-group input {
-  width: 100%;
+  width: 70%;
   padding: 10px;
+  margin-left: 50px;
   border: none;
   border-bottom: 2px solid #ccc;
   background: none;
   font-size: 16px;
-  color: white;
 }
 
 .input-group input:focus {
   outline: none;
+  color: white;
 }
 
-.input-group input::placeholder {
-  color: #ccc;
+.input-group input:focus::placeholder {
+  opacity: 0;
 }
 
 .checkbox-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-left: 50px;
+
 }
 
 .checkbox-label {
@@ -167,14 +136,13 @@ p {
 
 .label-div {
   display: flex;
-  align-items: center;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .icon2 {
   width: 24px;
   height: 24px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
 
 .label {
@@ -184,22 +152,17 @@ p {
 .submit-div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
 }
 
 .large {
-  width: 80%;
-  max-width: 280px;
-  height: auto;
-  margin-top: 20px;
+  width: 280px;
+  height: 160px;
+  margin-left: 70%;
 }
 
 .date-div {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
 .input-container input[type="date"] {
@@ -216,63 +179,8 @@ p {
 }
 
 .input-container input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+  filter: invert(1); /* Invert the color to white */
   opacity: 1;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
-  .nuxt-link {
-    align-self: center;
-    margin-right: 0;
-  }
-
-  p {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  .login-form {
-    padding: 20px;
-    width: 90%;
-  }
-
-  .submit-div {
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-  }
-
-  .checkbox-container {
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-
-  .login-button {
-    width: 100%;
-    max-width: 200px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-form {
-    padding: 15px;
-    width: 95%;
-  }
-
-  .login-button {
-    width: 100%;
-    height: 40px;
-  }
-
-  .submit-div {
-    flex-direction: column;
-    margin: 20px 0;
-  }
 }
 </style>
