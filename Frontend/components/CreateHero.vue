@@ -87,7 +87,7 @@ export default {
   Destroying(event){
     let forma = document.getElementById("Radionica");
     forma.removeChild(event.target.parentNode);
-    if(forma.lastElementChild.previousSibling.tagName == 'H2')this.NoviDiv();
+    if(forma.lastElementChild.previousSibling.previousSibling.tagName == 'H2')this.NoviDiv();
   },
 
   submitaj(event){
