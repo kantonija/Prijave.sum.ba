@@ -12,7 +12,7 @@
         Rok za prijave: <input type="datetime-local"/>
         <h2> Lista pitanja za prijavu: </h2>
 
-        <div class='testni'>
+        <div class>
           <input type='text' class='dugiteksti' placeholder='Unesite naziv pitanja...'/>
           <select class='VrstePitanja' @change='promjenaVrste'>
             <option value='KratkiOdgovor'> Kratki Odgovor </option>
@@ -99,16 +99,9 @@ export default {
 
 <style scoped>
 .hero {
-  //display: flex;
-  //justify-content: flex-start;
-  //flex-direction: column;
-  //align-items: center;
   height: 100vh;
-  //width: 100%;
   background-color: white;
   text-align: center;
-  //padding: 20px;
-  //box-sizing: border-box;
 }
 
 .closer{
@@ -143,10 +136,6 @@ option {
 
 .dugiteksti{
   width: 36vw;
-}
-
-.testni{
-  //background-color: green;
 }
 
 #Radionica{
