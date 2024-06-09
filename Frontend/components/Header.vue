@@ -1,46 +1,45 @@
 <template>
-    <div>
-      <div class="header">
-        <img src="/public/sumit-Photoroom.png" alt="SUMIT icon" class="logo">
-        <input type="text" class="search-field" placeholder="Search..." />
-        <div class="navbar-end">
-          <nuxt-link to="/" class="navbar-item">Home</nuxt-link>
-          <nuxt-link to="/about-us" class="navbar-item">About Us</nuxt-link>
-          <nuxt-link to="/login" class="navbar-item">Login</nuxt-link>
-          <nuxt-link to="/register" class="navbar-item">Register</nuxt-link>
-        </div>
-        <div class="hamburger" @click="toggleMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+  <div>
+    <div class="header">
+      <img src="/public/sumit-Photoroom.png" alt="SUMIT icon" class="logo">
+      <input type="text" class="search-field" placeholder="Search..." />
+      <div class="navbar-end">
+        <nuxt-link to="/" class="navbar-item">Home</nuxt-link>
+        <nuxt-link to="/about-us" class="navbar-item">About Us</nuxt-link>
+        <nuxt-link to="/login" class="navbar-item">Login</nuxt-link>
+        <nuxt-link to="/register" class="navbar-item">Register</nuxt-link>
+        <nuxt-link to="/create" class="navbar-item">Create</nuxt-link>
       </div>
-      <div class="mobile-menu" v-show="menuOpen">
-        <nuxt-link to="/" class="mobile-nav-item">Home</nuxt-link>
-        <nuxt-link to="/about-us" class="mobile-nav-item">About Us</nuxt-link>
-        <nuxt-link to="/login" class="mobile-nav-item">Login</nuxt-link>
-        <nuxt-link to="/register" class="mobile-nav-item">Register</nuxt-link>
+      <div class="hamburger" @click="toggleMenu">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  
-  const menuOpen = ref(false);
-  const toggleMenu = () => {
-    menuOpen.value = !menuOpen.value;
-  };
-  </script>
-  
-  <style scoped>
+    <div class="mobile-menu" v-show="menuOpen">
+      <nuxt-link to="/" class="mobile-nav-item">Home</nuxt-link>
+      <nuxt-link to="/about-us" class="mobile-nav-item">About Us</nuxt-link>
+      <nuxt-link to="/login" class="mobile-nav-item">Login</nuxt-link>
+      <nuxt-link to="/register" class="mobile-nav-item">Register</nuxt-link>
+      <nuxt-link to="/create" class="mobile-nav-item">Create</nuxt-link>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const menuOpen = ref(false);
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value;
+};
+</script>
+
+<style scoped>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html, body {
   overflow-x: hidden;
 }
 
@@ -84,7 +83,7 @@ html, body {
 .navbar-item {
   color: white;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.5rem;
   margin: 0 20px;
 }
 
@@ -117,7 +116,7 @@ html, body {
 .mobile-nav-item {
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem;
   margin: 10px 0;
 }
 
@@ -138,6 +137,4 @@ html, body {
     display: flex;
   }
 }
-
-  </style>
-  
+</style>
