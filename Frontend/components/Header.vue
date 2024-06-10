@@ -9,6 +9,7 @@
         <nuxt-link to="/login" class="navbar-item">Login</nuxt-link>
         <nuxt-link to="/register" class="navbar-item">Register</nuxt-link>
         <nuxt-link to="/create" class="navbar-item">Create</nuxt-link>
+        <nuxt-link to="/prijava" class="navbar-item">Prijava</nuxt-link>
       </div>
       <div class="hamburger" @click="toggleMenu">
         <span></span>
@@ -22,6 +23,8 @@
       <nuxt-link to="/login" class="mobile-nav-item">Login</nuxt-link>
       <nuxt-link to="/register" class="mobile-nav-item">Register</nuxt-link>
       <nuxt-link to="/create" class="mobile-nav-item">Create</nuxt-link>
+      <nuxt-link to="/prijava" class="mobile-nav-item">Prijava</nuxt-link>
+
     </div>
   </div>
 </template>
@@ -52,6 +55,7 @@ const toggleMenu = () => {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  z-index: 999;
 }
 
 .logo {
