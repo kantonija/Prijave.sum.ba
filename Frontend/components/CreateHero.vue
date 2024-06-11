@@ -34,6 +34,9 @@
 <script>
 export default {
   methods: {
+
+
+
     promjenaVrste(event) {
       let e = event.target.parentNode;
       let child = e.childNodes[3];
@@ -46,17 +49,48 @@ export default {
       }
     },
 
+
+
     dodajOpciju(e) {
       let pom = e.appendChild(document.createElement("div"));
       pom.appendChild(document.createTextNode("Opcija: "));
-      pom.appendChild(document.createElement("input"));
-      pom.appendChild(document.createElement("button"));
+      let dodajInput = document.createElement("input")
+      dodajInput.style.backgroundColor = 'transparent'
+      dodajInput.style.width = 'calc(40% - 20px)'
+      dodajInput.style.padding = '10px'
+      dodajInput.style.margin = '10px 0'
+      dodajInput.style.border = 'none'
+      dodajInput.style.borderBottom = '1px solid grey'
+      dodajInput.style.transition = 'all 0.3s ease'
+      dodajInput.style.color = 'white'
+      pom.appendChild(dodajInput);
+      let dodajButton2 = document.createElement('button')
+      dodajButton2.style.backgroundColor = 'transparent'
+      dodajButton2.style.borderRadius = '8px'
+      dodajButton2.style.padding = '5px 10px'
+      dodajButton2.style.margin = '10px 10px'
+      dodajButton2.style.border = '1px solid white'
+      dodajButton2.style.transition = 'all 0.3s ease'
+      dodajButton2.style.color = 'white'
+      dodajButton2.style.cursor = 'pointer'
+      dodajButton2.style.textAlign = 'center'
+      pom.appendChild(dodajButton2);
       pom.lastElementChild.innerHTML = "Dodaj još jednu opciju";
       pom.lastElementChild.onclick = (event) => {
         event.preventDefault();
         this.dodajOpciju(e);
       };
-      pom.appendChild(document.createElement("button"));
+      let dodajButton = document.createElement("button")
+      dodajButton.style.backgroundColor = 'transparent'
+      dodajButton.style.borderRadius = '8px'
+      dodajButton.style.padding = '5px 10px'
+      dodajButton.style.margin = '10px 10px'
+      dodajButton.style.border = '1px solid white'
+      dodajButton.style.transition = 'all 0.3s ease'
+      dodajButton.style.color = 'white'
+      dodajButton.style.cursor = 'pointer'
+      dodajButton.style.textAlign = 'center'
+      pom.appendChild(dodajButton);
       pom.lastElementChild.innerHTML = "Izbriši ovu opciju";
       pom.lastElementChild.onclick = (event) => {
         event.preventDefault();
@@ -65,31 +99,34 @@ export default {
       };
     },
 
+
+
     NoviDiv(event) {
-      let forma = document.getElementById("Radionica");
-      let pom = forma.lastElementChild.previousSibling;
-      let pom2 = document.createElement("div");
-      pom2.innerHTML = "<input type='text' data-v-0550afab class='dugiteksti' placeholder='Unesite naziv pitanja...'/><select data-v-0550afab class='VrstePitanja'><option data-v-0550afab value='KratkiOdgovor'> Kratki Odgovor </option><option data-v-0550afab value='ViseTocnih'> Vise Tocnih </option><option data-v-0550afab value='JedanOd'> Jedan Od </option></select><button class='Closer' data-v-0550afab @click='Destroying'>X</button>";
-      forma.insertBefore(pom2, forma.lastElementChild.previousSibling);
+  let forma = document.getElementById("Radionica");
+  let pom = forma.lastElementChild.previousSibling;
+  let pom2 = document.createElement("div");
+  pom2.innerHTML = "<input type='text' data-v-0550afab class='dugiteksti' placeholder='Unesite naziv pitanja...'/><select data-v-0550afab class='VrstePitanja'><option data-v-0550afab value='KratkiOdgovor'> Kratki Odgovor </option><option data-v-0550afab value='ViseTocnih'> Vise Tocnih </option><option data-v-0550afab value='JedanOd'> Jedan Od </option></select><button class='Closer' data-v-0550afab @click='Destroying'>X</button>";
+  forma.insertBefore(pom2, forma.lastElementChild);
+  
+  let selectElement = pom2.querySelector(".VrstePitanja");
+  selectElement.addEventListener("change", this.promjenaVrste);
+  let pomocni = pom2.querySelector(".Closer");
+  pomocni.addEventListener("click", this.Destroying);
+},
 
-      let selectElement = pom2.querySelector(".VrstePitanja");
-      selectElement.addEventListener("change", this.promjenaVrste);
-      let pomocni = pom2.querySelector(".Closer");
-      pomocni.addEventListener("click", this.Destroying);
-    },
 
-    Destroying(event) {
-      let forma = document.getElementById("Radionica");
-      forma.removeChild(event.target.parentNode);
-      if (forma.lastElementChild.previousSibling.previousSibling.tagName == 'H2') this.NoviDiv();
-    },
 
-    submitaj(event) {
-      document.getElementById("Radionica").submit();
-    }
+  Destroying(event){
+    let forma = document.getElementById("Radionica");
+    forma.removeChild(event.target.parentNode);
+    if(forma.lastElementChild.previousSibling.previousSibling.tagName == 'H2')this.NoviDiv();
+  },
+
+  submitaj(event){
+    document.getElementById("Radionica").submit();
   }
+ }
 }
-
 </script>
 
 <style scoped>
@@ -102,7 +139,6 @@ export default {
 .Closer {
   background-color: #101D2F;
   border-radius: 8px;
-  height: 4vh;
   padding: 10px 20px;
   margin: 20px 20px;
   border: none;
@@ -163,7 +199,20 @@ option {
   font-size: 2vh;
 }
 
-input[type="text"], input[type="date"], input[type="datetime-local"] {
+input[type="text"],
+input[type="date"],
+input[type="datetime-local"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid grey;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.vise-tocnih {
   width: calc(100% - 20px);
   padding: 10px;
   margin: 10px 0;
@@ -175,7 +224,7 @@ input[type="text"], input[type="date"], input[type="datetime-local"] {
 }
 
 .hero-content {
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -264,5 +313,4 @@ input[type="text"], input[type="date"], input[type="datetime-local"] {
   opacity: 1;
   cursor: pointer;
 }
-
 </style>
