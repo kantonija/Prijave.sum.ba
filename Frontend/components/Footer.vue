@@ -19,7 +19,7 @@
         <p>2024 — All rights reserved © <a href="https://sumit.sum.ba/" target="_blank" class="sumit-link">SUMIT</a></p>
       </div>
       <div class="footer-section right social-media">
-        <img src="/public/sumit-Photoroom.png" alt="Switch icon" class="large" />
+        <img src="/public/sumit-Photoroom.png" alt="SUMIT icon" class="large" />
         <p>Follow us on social media:</p>
         <div class="icons">
           <a href="https://www.instagram.com/sumit.sum.ba/" target="_blank" class="sumit-link"><InstagramIcon class="icon2" /></a>

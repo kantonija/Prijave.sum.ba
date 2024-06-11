@@ -27,7 +27,7 @@
         </div>
       </form>
     </div>
-    <img src="/public/sumit-Photoroom.png" alt="SUMIT icon" class="large">
+    <NuxtLink to="/"><img src="/public/sumit-Photoroom.png" alt="SUMIT icon" class="large"></NuxtLink> 
   </div>
 </template>
 

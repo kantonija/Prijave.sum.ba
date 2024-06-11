@@ -23,8 +23,8 @@
           </div>
         </div>
         <div class="btn-div">
-          <button class="Closer" @click="NoviDiv">Dodaj još jedno pitanje</button>
-          <button class="Closer" @click='submitaj'>Napravi prijavu</button>
+          <button class="Buttoni" @click="NoviDiv">Dodaj još jedno pitanje</button>
+          <button class="Buttoni" @click='submitaj'>Napravi prijavu</button>
         </div>
       </form>
     </div>
@@ -117,9 +117,8 @@ export default {
 
 
   Destroying(event){
-    let forma = document.getElementById("Radionica");
-    forma.removeChild(event.target.parentNode);
-    if(forma.lastElementChild.previousSibling.previousSibling.tagName == 'H2')this.NoviDiv();
+    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+    if(document.getElementById("Radionica").lastElementChild.previousSibling.innerHTML == "")this.NoviDiv();
   },
 
   submitaj(event){
@@ -149,6 +148,22 @@ export default {
 }
 
 .Closer:hover {
+  background-color: #080f18;
+}
+
+.Buttoni {
+  background-color: #101D2F;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 20px 20px;
+  border: none;
+  transition: all 0.3s ease;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.Buttoni:hover {
   background-color: #080f18;
 }
 
