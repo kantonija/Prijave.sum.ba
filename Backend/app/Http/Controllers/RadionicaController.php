@@ -36,9 +36,9 @@ class RadionicaController extends Controller
                 'OpisRadionice' => 'required|string',
                 'IdKreatora' => 'required|exists:users,id',
                 'NazivRadionice' => 'required|string',
-                'DatumPocetka' => 'required|timestamp',
-                'DatumZavrsetka' => 'required|timestamp',
-                'PrijaveDo' => 'required|timestamp'
+                'DatumPocetka' => 'required',
+                'DatumZavrsetka' => 'required',
+                'PrijaveDo' => 'required'
             ]);
             if($validator->fails()) {
 
@@ -53,6 +53,8 @@ class RadionicaController extends Controller
                 'DatumZavrsetka' => $request->DatumZavrsetka,
                 'PrijaveDo' => $request->PrijaveDo,
                 'IdKreatora' => $request->IdKreatora,
+                'UrlSlike' => "Slika",
+                'Tagovi' => "Tagovi",
             ]);
 
             return response()->json($podaci->NazivRadionice, 201);

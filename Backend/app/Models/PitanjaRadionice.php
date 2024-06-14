@@ -2,25 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Radionica;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class PitanjaRadionice extends Model
+class pitanjaRadionice extends Model
 {
     protected $table = 'pitanjaradionice';
 
     use HasFactory;
 
-    protected $fillable= [
+    protected $fillable = [
         'NazivPitanja',
         'OpcijePitanja',
-        'VrstePodataka',
-        'IdRadionice'
+        'VrstaPodatka',
+        'radionice'
     ];
 
-    public function radionica()
-    {
-        return $this->belongsTo(Radionica::class);
+    public function radionica(){
+        return $this->belongsTo(radionica::class);
     }
 }

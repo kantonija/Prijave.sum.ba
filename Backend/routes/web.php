@@ -11,10 +11,10 @@ Route::get('/', function () {
 });
 
 Route::controller(PitanjaRadioniceController::class)->group(function (){
-    Route::get('/PitanjaRadionice', 'index');
-    Route::post('/PitanjaRadionice', 'store');
-    Route::get('/PitanjaRadionice/{id}', 'show');
-    Route::delete('/PitanjaRadionice/{id}', 'destroy');
+    Route::get('/pitanjaRadionice', 'index');
+    Route::post('/pitanjaRadionice', 'store');
+    Route::get('/pitanjaRadionice/{id}', 'show');
+    Route::delete('/pitanjaRadionice/{id}', 'destroy');
     Route::get('/SvaPitanja/{IdRadionice}', 'pitanja');
 });
 

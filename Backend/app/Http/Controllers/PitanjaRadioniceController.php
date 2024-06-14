@@ -41,9 +41,9 @@ class PitanjaRadioniceController extends Controller
 
         try{
            $validator = Validator::make( $request->all(),[
-                'VrstePodataka' => 'required|unique:pitanjaRadionice,VrstaPodataka,NULL,id,IdRadionice,' . $request->input('IdRadionice'),
-                'IdRadionice' => 'required|exists:radionica,id',
-                'NazivPitanja' => 'required|unique:pitanjaRadionice,NazivPitanja,NULL,id,IdRadionice,' . $request->input('IdRadionice')
+                'VrstaPodatka' => 'required|unique:pitanjaRadionice,VrstaPodatka,NULL,id,radionice,' . $request->input('radionice'),
+                'radionice' => 'required|exists:radionica,id',
+                'NazivPitanja' => 'required|unique:pitanjaRadionice,NazivPitanja,NULL,id,radionice,' . $request->input('radionice')
             ]);
             if($validator->fails()) {
 
@@ -52,8 +52,8 @@ class PitanjaRadioniceController extends Controller
 
             $podaci = PitanjaRadionice::create([
                 'NazivPitanja' => $request->NazivPitanja,
-                'VrstePodataka' => $request->VrstePodataka,
-                'IdRadionice' => $request->IdRadionice,
+                'VrstaPodatka' => $request->VrstaPodatka,
+                'radionice' => $request->radionice,
                 'OpcijePitanja' => $request->OpcijePitanja,
             ]);
 
