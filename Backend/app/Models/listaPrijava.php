@@ -9,23 +9,20 @@ class listaPrijava extends Model
 {
     use HasFactory;
 
-    protected $table = '_listaprijava';
-
-    protected $fillable= [
+    protected $fillable = [
         'IdKreatora',
         'IdRadionice'
     ];
 
-    public function radionica()
-    {
-        return $this->belongsTo(Radionica::class);
-    }
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
-    public function korisnik_podatak()
-    {
-        return $this->hasMany(korisnik_podatak::class);
+
+    public function radionica(){
+        return $this->belongsTo(radionica::class);
+    }
+
+    public function korisnikPodatak(){
+        return $this->hasMany(korisnikPodatak::class);
     }
 }

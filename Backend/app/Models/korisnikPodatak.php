@@ -9,16 +9,13 @@ class korisnikPodatak extends Model
 {
     use HasFactory;
 
-    protected $table = '_korisnik_podatak';
-
-    protected $fillable= [
+    protected $fillable = [
         'Odgovor',
         'Redoslijed',
         'IdPrijave'
     ];
 
-    public function listaPrijava()
-    {
+    public function listaPrijava(){
         return $this->belongsTo(listaPrijava::class);
     }
 }

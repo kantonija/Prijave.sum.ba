@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('UrlSlike');
             $table->string('VoditeljRadionice');
             $table->string('Tagovi');
-            $table->timestamp('DatumPocetka')->nullable();
-            $table->timestamp('DatumZavrsetka')->nullable();
-            $table->timestamp('PrijaveDo')->nullable();
+            $table->timestamp('DatumPocetka');
+            $table->timestamp('DatumZavrsetka');
+            $table->timestamp('PrijaveDo');
 
             $table->foreignId('IdKreatora');
             $table->foreign('IdKreatora')->references('id')->on('users');

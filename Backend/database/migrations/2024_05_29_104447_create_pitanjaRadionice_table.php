@@ -16,8 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('NazivPitanja');
             $table->string('OpcijePitanja');
-            $table->string('VrstaPodataka');
+            $table->string('VrstaPodatka');
 
+            
             $table->foreignId('radionice');
             $table->foreign('radionice')->references('id')->on('radionica');
         });

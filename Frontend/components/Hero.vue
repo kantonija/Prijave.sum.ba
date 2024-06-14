@@ -9,7 +9,7 @@
     <div class="hero-content">
       <div v-if="selectedButton === 1">
         <h2>Otvorene prijave</h2>
-        <p>Description 1</p>
+        <p>{{ courses.data }}</p>
       </div>
       <div v-else-if="selectedButton === 2">
         <h2>Zatvorene prijave</h2>
@@ -28,13 +28,30 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      selectedButton: 1
+      selectedButton: 1,
+      courses: [],
     };
   },
+  mounted(){
+    this.getCurses();
+  },
   methods: {
+    async getCurses(){
+
+      try {
+        axios.get('http://localhost:8000/Radionica').then(res =>{
+          this.courses = res
+        })
+      } catch (error) {
+        this.error = error.response ? error.response.data : error.message
+      }
+      },
+
     showInfo(buttonNumber) {
       this.selectedButton = buttonNumber;
     }

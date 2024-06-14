@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Radionica extends Model
+class radionica extends Model
 {
     use HasFactory;
 
     protected $table = 'radionica';
 
-    protected $fillable= [
+    protected $fillable = [
+        'NazivRadionice',
         'OpisRadionice',
         'UrlSlike',
         'VoditeljRadionice',
@@ -22,16 +23,15 @@ class Radionica extends Model
         'IdKreatora'
     ];
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
-    public function pitanjaRadionice()
-    {
-        return $this->hasMany(PitanjaRadionice::class);
+
+    public function pitanjaRadionice(){
+        return $this->hasMany(pitanjaRadionice::class);
     }
-    public function listaPrijava() 
-    {
+
+    public function listaPrijava(){
         return $this->hasMany(listaPrijava::class);
     }
 }
