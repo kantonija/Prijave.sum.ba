@@ -7,9 +7,9 @@
         Naziv vaše prijave: <input type="text" placeholder="Unesite naziv..." /><br />
         Dodatne informacije o prijavi: <input type="text" placeholder="Unesite opis..." /><br />
         Ime i prezime voditelja: <input type="text" placeholder="Unesite voditelja..." /><br />
-        Datum početka: <input type="date" /><br />
-        Datum završetka: <input type="date" /><br />
-        Rok za prijave: <input type="datetime-local" />
+        Datum početka: <input class="date" type="date" /><br />
+        Datum završetka: <input class="date" type="date" /><br />
+        Rok za prijave: <input class="date" type="datetime-local" />
         <h2> Lista pitanja za prijavu: </h2>
         <div class="pitanje">
           <div class="flex-div">
@@ -102,29 +102,29 @@ export default {
 
 
     NoviDiv(event) {
-  let forma = document.getElementById("Radionica");
-  let pom = forma.lastElementChild.previousSibling;
-  let pom2 = document.createElement("div");
-  pom2.innerHTML = "<input type='text' data-v-0550afab class='dugiteksti' placeholder='Unesite naziv pitanja...'/><select data-v-0550afab class='VrstePitanja'><option data-v-0550afab value='KratkiOdgovor'> Kratki Odgovor </option><option data-v-0550afab value='ViseTocnih'> Vise Tocnih </option><option data-v-0550afab value='JedanOd'> Jedan Od </option></select><button class='Closer' data-v-0550afab @click='Destroying'>X</button>";
-  forma.insertBefore(pom2, forma.lastElementChild);
-  
-  let selectElement = pom2.querySelector(".VrstePitanja");
-  selectElement.addEventListener("change", this.promjenaVrste);
-  let pomocni = pom2.querySelector(".Closer");
-  pomocni.addEventListener("click", this.Destroying);
-},
+      let forma = document.getElementById("Radionica");
+      let pom = forma.lastElementChild.previousSibling;
+      let pom2 = document.createElement("div");
+      pom2.innerHTML = "<input type='text' data-v-0550afab class='dugiteksti' placeholder='Unesite naziv pitanja...'/><select data-v-0550afab class='VrstePitanja'><option data-v-0550afab value='KratkiOdgovor'> Kratki Odgovor </option><option data-v-0550afab value='ViseTocnih'> Vise Tocnih </option><option data-v-0550afab value='JedanOd'> Jedan Od </option></select><button class='Closer' data-v-0550afab @click='Destroying'>X</button>";
+      forma.insertBefore(pom2, forma.lastElementChild);
+
+      let selectElement = pom2.querySelector(".VrstePitanja");
+      selectElement.addEventListener("change", this.promjenaVrste);
+      let pomocni = pom2.querySelector(".Closer");
+      pomocni.addEventListener("click", this.Destroying);
+    },
 
 
 
-  Destroying(event){
-    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-    if(document.getElementById("Radionica").lastElementChild.previousSibling.innerHTML == "")this.NoviDiv();
-  },
+    Destroying(event) {
+      event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+      if (document.getElementById("Radionica").lastElementChild.previousSibling.innerHTML == "") this.NoviDiv();
+    },
 
-  submitaj(event){
-    document.getElementById("Radionica").submit();
+    submitaj(event) {
+      document.getElementById("Radionica").submit();
+    }
   }
- }
 }
 </script>
 
@@ -134,6 +134,8 @@ export default {
   background-color: white;
   text-align: center;
 }
+
+
 
 .Closer {
   background-color: #101D2F;
@@ -179,7 +181,7 @@ export default {
 }
 
 .VrstePitanja {
-  border: 1px solid grey;
+  border: 1px solid white;
   border-radius: 8px;
   height: 3.6vh;
   padding: 5px 10px;
@@ -197,7 +199,7 @@ option {
   min-width: 200px;
   padding: 5px 10px;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   background-color: transparent;
   transition: all 0.3s ease;
   color: white;
@@ -221,9 +223,13 @@ input[type="datetime-local"] {
   padding: 10px;
   margin: 10px 0;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   background-color: transparent;
   transition: all 0.3s ease;
+  color: white;
+}
+
+input[type='text']::placeholder {
   color: white;
 }
 
@@ -232,7 +238,7 @@ input[type="datetime-local"] {
   padding: 10px;
   margin: 10px 0;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   background-color: transparent;
   transition: all 0.3s ease;
   color: white;

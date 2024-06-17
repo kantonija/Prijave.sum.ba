@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <NuxtLink to="/" class="nuxt-link">Home</NuxtLink>
+    <NuxtLink to="/" class="nuxt-link"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+        viewBox="0 0 24 24">
+        <path fill="#FFFFFF" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </svg>
+    </NuxtLink>
     <p>Sign Up</p>
     <div class="login-container">
       <form class="login-form">
@@ -23,7 +27,8 @@
           </div>
         </div>
         <div class="input-group">
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
+            required>
           <div class="label-div">
             <PasswordIcon class="icon2" /> <label for="confirm-password" class="label">Confirm Password</label>
           </div>
@@ -51,7 +56,8 @@ import NameIcon from '~/assets/icons/name.svg'
 </script>
 
 <style scoped>
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -77,7 +83,8 @@ html, body {
 .nuxt-link {
   text-decoration: none;
   color: white;
-  align-self: center;
+  align-self: flex-start;
+  margin: 20px 40px;
 }
 
 .nuxt-link:hover {
@@ -86,9 +93,9 @@ html, body {
 }
 
 p {
-  font-size: 3.5em;
+  font-size: 3em;
   margin-top: 20px;
-  margin-right: 70%;
+  text-align: center;
 }
 
 .login-container {
