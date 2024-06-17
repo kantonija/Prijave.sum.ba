@@ -5,7 +5,10 @@ export default {
   modules: ["vue3-carousel-nuxt"],
   devtools: { enabled: true },
 
-  css: ["./assets/style.css"],
+  css: [
+    './assets/style.css'
+  ],
+  
 
   vite: {
     plugins: [viteSvgLoader()],

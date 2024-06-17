@@ -87,7 +87,7 @@ const toggleMenu = () => {
 .navbar-item {
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0 20px;
 }
 
