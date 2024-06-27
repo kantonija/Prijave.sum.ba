@@ -9,11 +9,11 @@
     <div class="hero-content">
       <div v-if="selectedButton === 1">
         <h2>Otvorene prijave</h2>
-        <p></p>
+        <p>{{ naslovi }}</p>
       </div>
       <div v-else-if="selectedButton === 2">
         <h2>Zatvorene prijave</h2>
-        <p>Description 2</p>
+        <p>{{ nesto.value }}</p>
       </div>
       <div v-else-if="selectedButton === 3">
         <h2>Moje prijave</h2>
@@ -39,17 +39,19 @@
 
 
 <script>
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/vue'; // Importing Swiper for Vue
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
 import 'swiper/css/pagination';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
-
+axios.defaults.withCredentials = true;
 
 export default {
+
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   setup() {
     return {
@@ -60,6 +62,8 @@ export default {
     return {
       selectedButton: 1,
       courses: [],
+      naslovi: [],
+      nesto: [],
       photos: [
         "photo1.jpg",
         "photo2.jpg",
@@ -69,13 +73,36 @@ export default {
       ],
     };
   },
+  mounted(){
+    this.getCurses();
+  },
 
   methods: {
+
+    async getCurses(){
+      try {
+          await axios.get('http://localhost:8000/Radionica').then(res =>{
+            this.courses = res
+          })
+        } catch (error) {
+          this.error = error.response ? error.response.data : error.message
+        }
+        let {data} = await axios.get("http://localhost:8000/api/user");
+        await (this.nesto.value = data);
+        await this.courses.data.forEach(element => {
+          console.log(element.NazivRadionice);
+          this.naslovi.push(element.NazivRadionice);
+        });;
+      },
+
+
 
     showInfo(buttonNumber) {
       this.selectedButton = buttonNumber;
     }
   },
+  
+
 };
 </script>
 
