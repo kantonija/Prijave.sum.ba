@@ -7,9 +7,9 @@
         <p id="NazivPrijave">Naziv vaše prijave: <input type="text" placeholder="Unesite naziv..." /></p>
         <p id="DodatneInfo">Dodatne informacije o prijavi: <input type="text" placeholder="Unesite opis..." /></p>
         <p id="Voditelj">Ime i prezime voditelja: <input type="text" placeholder="Unesite voditelja..." /></p>
-        <p id="Pocetak">Datum početka: <input class="date" type="date" /></p>
-        <p id="Zavrsetak">Datum završetka: <input class="date" type="date" /></p>
-        <p id="RokPrijava">Rok za prijave: <input class="date" type="datetime-local" /></p>
+        <p id="Pocetak">Datum početka: <input class="date" type="date" id="DatPoc"/></p>
+        <p id="Zavrsetak">Datum završetka: <input class="date" type="date" id="DatKraj"/></p>
+        <p id="RokPrijava">Rok za prijave: <input class="date" type="datetime-local" id="DatPrij"/></p>
         <h2 id="NaslovListe"> Lista pitanja za prijavu: </h2>
           <div class="flex-div">
             <input type='text' class='dugiteksti' placeholder='Unesite naziv pitanja...' />
@@ -31,16 +31,53 @@
 
 <script>
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 export default {
   data() {
     return {
       Radionice: 0,
       ErrorCode: "Niste unijeli sve podatke!",
+      User: [],
     };
   },
+  mounted(){
+    this.generirajHeader();
+  },
   methods: {
+    async generirajHeader(){
+        try{
+          let{data} = await axios.get("http://localhost:8000/api/user");
+          this.napraviHeader(data);
+          this.user = data;
+        }
+        catch(error){
+          if(error.response.status == 401){
+            document.getElementsByClassName("navbar-end")[0].innerHTML += "<a href='/login' class='navbar-item' data-v-a81738bd>Login</a>";
+            document.getElementsByClassName("mobile-menu")[0].innerHTML += "<a href='/login' class='mobile-nav-item' data-v-a81738bd>Login</a>";
+          }
+        }
+      },
+    async napraviHeader(data){
+        switch(data.vrstaKorisnika){
+          case 1:
+          document.getElementsByClassName("navbar-end")[0].innerHTML += "<a href='/korisnici' class='navbar-item' data-v-a81738bd>Korisnici</a>";
+          document.getElementsByClassName("mobile-menu")[0].innerHTML += "<a href='/korisnici' class='mobile-nav-item' data-v-a81738bd>Korisnici</a>";
+          case 2:
+          document.getElementsByClassName("navbar-end")[0].innerHTML += "<a href='/create' class='navbar-item' data-v-a81738bd>Kreiraj</a>";
+          document.getElementsByClassName("mobile-menu")[0].innerHTML += "<a href='/create' class='mobile-nav-item' data-v-a81738bd>Kreiraj</a>";
+          case 3:
+          document.getElementsByClassName("navbar-end")[0].innerHTML += "<a href='/prijave' class='navbar-item' data-v-a81738bd>Prijave</a>";
+          document.getElementsByClassName("mobile-menu")[0].innerHTML += "<a href='/prijave' class='mobile-nav-item' data-v-a81738bd>Prijave</a>";
 
+          document.getElementsByClassName("navbar-end")[0].innerHTML += "<a href='/logout' class='navbar-item' data-v-a81738bd>Odjavi se</a>";
+          document.getElementsByClassName("mobile-menu")[0].innerHTML += "<a href='/logout' class='mobile-nav-item' data-v-a81738bd>Odjavi se</a>";
+
+          document.getElementsByClassName("navbar-end")[0].innerHTML += "<p class='navbar-item-dva' data-v-a81738bd>Pozdrav, " + data.name + "</p>";
+          document.getElementsByClassName("mobile-menu")[0].innerHTML += "<p class='navbar-item-dva' data-v-a81738bd>Pozdrav, " + data.name + "</p>";
+          
+        }
+      },
 
 
     promjenaVrste(event) {
@@ -124,10 +161,12 @@ export default {
 
     Destroying(event) {
       event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-      if (document.getElementById("Radionica").lastElementChild.previousSibling.innerHTML == "") this.NoviDiv();
+      console.log(document.getElementById("Radionica").lastElementChild.previousSibling);
+      if (document.getElementById("Radionica").lastElementChild.previousSibling.id == "NaslovListe") this.NoviDiv();
     },
 
     async Submitting(event) {
+      if(confirm("Jeste li sigurni da ste dobro unijeli podatke?")){
       if(this.provjeraUnosa()){
       try {
           await axios.post('http://localhost:8000/Radionica',{
@@ -137,7 +176,7 @@ export default {
             "DatumPocetka": document.getElementById("Pocetak").childNodes[1].value,
             "DatumZavrsetka": document.getElementById("Zavrsetak").childNodes[1].value,
             "PrijaveDo": document.getElementById("RokPrijava").childNodes[1].value,
-            "IdKreatora": 1,
+            "IdKreatora": this.user.id,
           }).then(res =>{
             //console.log(res);
           })
@@ -154,7 +193,7 @@ export default {
         alert("Prijava je uspješno napravljena!");
         await navigateTo('/');
     }
-    else(alert(this.ErrorCode));
+    else(alert(this.ErrorCode));}
   },
 
     provjeraUnosa(){
@@ -165,11 +204,13 @@ export default {
           this.ErrorCode = "Niste unijeli sve podatke!"
         }
       });
-      if(Unosi[3].value > Unosi[4].value){
+      if(document.getElementById("DatPoc").value > document.getElementById("DatKraj").value){
+        console.log(document.getElementById("DatPoc").value +">"+document.getElementById("DatKraj").value);
         this.ErrorCode = "Datum završetka ne smije biti prije datuma početka!"
         return 0;
       }
-      if(Unosi[5].value > Unosi[4].value){
+      if(document.getElementById("DatPrij").value > document.getElementById("DatKraj").value){
+        console.log(document.getElementById("DatPrij").value +">"+document.getElementById("DatKraj").value);
         this.ErrorCode = "Krajnji rok za prijavu ne smije biti nakon datuma završetka prijave!"
         return 0;
       }

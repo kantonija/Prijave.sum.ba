@@ -5,6 +5,7 @@ use App\Http\Controllers\RadionicaController;
 use App\Http\Controllers\ListaPrijavaController;
 use App\Http\Controllers\KorisnikPodatakController;
 use App\Http\Controllers\PitanjaRadioniceController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::controller(ListaPrijavaController::class)->group(function (){
     Route::get('/ListaPrijava/{id}', 'show');
     Route::delete('/ListaPrijava/{id}', 'destroy');
     Route::get('/SvePrijave/{IdRadionice}', 'prijave');
+    Route::get('/PrijaveKorisnika/{IdKreatora}', 'prijaveKorisnika');
 });
 
 Route::controller(KorisnikPodatakController::class)->group(function (){
@@ -52,5 +54,9 @@ Route::controller(KorisnikPodatakController::class)->group(function (){
     Route::post('/KorisnikPodatak', 'store');
     Route::get('/KorisnikPodatak/{id}', 'show');
     Route::delete('/KorisnikPodatak/{id}', 'destroy');
-    Route::get('/SviPodaci/{IdRadionice}', 'podaci');
+    Route::get('/SviPodaci/{IdPrijave}', 'podaci');
 });
+
+Route::get('/dajKorisnike', [RegisteredUserController::class, 'index']);
+Route::post('/promjeniVrstu/{id}', [RegisteredUserController::class, 'promjeni']);
+Route::get('/prikaziKorisnika/{id}', [RegisteredUserController::class, 'show']);

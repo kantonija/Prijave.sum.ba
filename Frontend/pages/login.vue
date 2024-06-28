@@ -22,8 +22,7 @@
         </div>
         <div class="submit-div">
           <div class="checkbox-container">
-            <input type="checkbox" id="stay-signed-in" name="stay-signed-in">
-            <label for="stay-signed-in" class="checkbox-label">Stay signed in</label>
+            <NuxtLink to="/register" id="registriranje">Nemate račun?</NuxtLink>
           </div>
           <button type="submit" class="login-button">
             <ArrowRightIcon class="icon-arrow" />
@@ -43,8 +42,6 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true;
 
-//const user = ref();
-
 async function onLogin(){
   await axios.get("http://localhost:8000/sanctum/csrf-cookie");
     try {
@@ -62,10 +59,13 @@ async function onLogin(){
       alert("Već ste ulogirani!");
       navigateTo('/');
     }
+    document.getElementById("password").value = "";
   }
   
 }
+
 </script>
+
 
 <style scoped>
 html,
@@ -79,6 +79,10 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+#registriranje{
+  color:white;
 }
 
 .container {
