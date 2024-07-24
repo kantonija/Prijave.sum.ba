@@ -32,6 +32,7 @@ Route::controller(ListaPrijavaController::class)->group(function (){
     Route::get('/ListaPrijava/{id}', 'show');
     Route::delete('/ListaPrijava/{id}', 'destroy');
     Route::get('/SvePrijave/{IdRadionice}', 'prijave');
+    Route::get('/PrijaveRadionice/{IdRadionice}','downloadCSVAction')->name('download.csv');
 });
 
 Route::controller(KorisnikPodatakController::class)->group(function (){
@@ -41,3 +42,4 @@ Route::controller(KorisnikPodatakController::class)->group(function (){
     Route::delete('/KorisnikPodatak/{id}', 'destroy');
     Route::get('/SviPodaci/{IdRadionice}', 'podaci');
 });
+

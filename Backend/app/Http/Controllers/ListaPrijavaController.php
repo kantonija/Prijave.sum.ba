@@ -32,7 +32,7 @@ class ListaPrijavaController extends Controller
     public function prijave($IdRadionice)
     {
         $podaci = listaPrijava::where('IdRadionice', $IdRadionice)->get();
-        
+
         return response()->json($podaci);
     }
 
@@ -77,5 +77,56 @@ class ListaPrijavaController extends Controller
 
     }
 
-    
+    public function downloadCSVAction($IdRadionice)
+{
+    try {
+
+        $radionica = Radionica::find($IdRadionice);
+
+        if (!$radionica) {
+            return response()->json(['message' => 'Radionica not found'], 404);
+        }
+
+        $prijavljeniUseriIds = $radionica->PrijavljeniUseri;
+        $prijavljeniUseriIds = explode(',', $prijavljeniUseriIds);
+        $users = User::whereIn('id', $prijavljeniUseriIds)->get();
+        return $this->downloadCSV($users, $radionica);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Internal Server Error'], 500);
+    }
+}
+
+public function downloadCSV($users, $radionica)
+{
+
+
+    $usersData = [
+        ['Korisnik ID', 'Ime', 'Email', 'Odgovor'],
+    ];
+
+    foreach ($users as $user) {
+        $usersData[] = [$user->id, $user->name, $user->email, $user->odgovor];
+    }
+    $radionicaData = $radionica->NazivRadionice . " - " . $radionica->DatumPocetka . ".csv";
+    $filename = $radionicaData;
+    $handle = fopen($filename, 'w+');
+
+    foreach ($usersData as $row) {
+        fputcsv($handle, $row);
+    }
+
+    fclose($handle);
+
+    $headers = [
+        'Content-Type' => 'text/csv',
+        'Access-Control-Allow-Origin' => 'http://localhost:3000',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers' => 'Content-Type, Authorization',
+    ];
+
+    return response()->download($filename, $radionicaData, $headers)->deleteFileAfterSend(true);
+}
+
+
+
 }
